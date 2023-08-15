@@ -11,26 +11,26 @@
   text-align: center;
 
   :global {
-    &__image {
+    .ls-modal__image {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       transform: translateY(-60%);
     }
-  
+
     h1 {
       color: #e77572;
       margin: 0;
     }
-  
+
     p {
       margin: 13px;
       font-family: 'georgia';
       font-size: 13px;
       color: #b9918e;
     }
-  
+
     button {
       background: #e77572;
       color: white;
@@ -49,5 +49,11 @@
       border-bottom-right-radius: 20px;
       border-bottom-left-radius: 20px;
     }
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  .ls-modal {
+    width: 90%;
   }
 }

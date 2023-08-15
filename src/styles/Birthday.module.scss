@@ -1,44 +1,22 @@
 .birthday {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 6rem;
   min-height: 100vh;
+  min-width: 100vw;
 
   :global {
 
     .birthday__stage {
-      margin: auto;
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
+      left: 50%;
+      transform: translate(-50%, -50%);
       display: none;
       width: 500px;
-    }
 
-    .stage1 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      img :local {
-        position: relative;
-        top: 0;
-        transform: scale(0);
-        animation: bounce .6s 1s forwards, moveup .6s 2s forwards;
-      }
-      .start :local {
-        margin-top: 30px;
-        animation: in 0.8s 2.9s forwards;
-        position: relative;
-        top: -20px;
-        opacity: 0;
-      }
-    }
-
-    .stage2 {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -56,6 +34,31 @@
         line-height: 18px;
         margin: 0;
       }
+    }
+
+    @media only screen and (max-width: 1080px) {
+      .birthday__stage {
+        width: 90%;
+      }
+    }
+
+    .stage1 {
+      img :local {
+        position: relative;
+        top: 0;
+        transform: scale(0);
+        animation: bounce .6s 1s forwards, moveup .6s 2s forwards;
+      }
+      .start :local {
+        margin-top: 30px;
+        animation: in 0.8s 2.9s forwards;
+        position: relative;
+        top: -20px;
+        opacity: 0;
+      }
+    }
+
+    .stage2 {
 
       .mix {
         margin: 80px 0px 10px 0px;
@@ -81,29 +84,91 @@
     }
 
     .stage3 {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      h1 {
-        color: #e77572;
-        margin: 0;
-      }
-
-      p {
-        font-family: 'georgia';
-        font-size: 12px;
-        color: #b9918e;
-        line-height: 18px;
-        margin: 0;
-      }
 
       .oven {
-        margin: 40px 0px -40px 0px;
+        margin: 40px 0px -10px 0px;
         position: relative;
       }
     }
+
+    .stage4 {
+      .season-paste {
+        display: flex;
+        margin-top: 40px;
+        .paste {
+          & + .paste {
+            margin-left: 40px;
+          }
+          &.inactive {
+            pointer-events: none;
+            opacity: 0.6;
+          }
+          .intros {
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            h3 {
+              text-align: left;
+              color: #a25a58;
+              font-size: 20px;
+            }
+            h5 {
+              color: #e77572;
+              font-size: 20px;
+            }
+          }
+
+          .options {
+            display: flex;
+            .option {
+              & + .option {
+                margin-left: 14px;
+              }
+              &__color {
+                cursor: pointer;
+                width: 50px;
+                height: 50px;
+                border: 3px solid rgba(0, 0, 0, 0.07);
+                border-radius: 8px;
+                margin-bottom: 5px;
+                transition: all 0.12s;
+                &:hover {
+                  border: 3px solid white;
+                }
+              }
+              &__name {
+                text-align: center;
+                color: #e77572;
+              }
+            }
+          }
+        }
+      }
+
+      .cake {
+        margin-top: 50px;
+        .base {
+          position: relative;
+          height: 40px;
+          background-image: -webkit-repeating-linear-gradient(-45deg, transparent, transparent 5px, rgba(255, 255, 255, .2) 5px, rgba(255, 255, 255, .2) 10px);
+        }
+      }
+    }
+
+    @media only screen and (max-width: 1080px) {
+      .stage4 {
+        width: 90%;
+        .season-paste {
+          margin-top: 10px;
+          flex-direction: column;
+          align-items: center;
+          .paste + .paste {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+
     .scale {
       &-enter {
         transform: translateY(-50%) scale(0);
