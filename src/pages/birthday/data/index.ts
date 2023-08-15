@@ -24,3 +24,40 @@ export const stagesContent: StageContent[] = [
     btnUrl: 'Okay, Let‘s go'
   },
 ]
+
+export interface SeasonOption {
+  color: string
+  name: string
+}
+export const baseOptions: SeasonOption[] = [
+  {
+    color: '#ffd296',
+    name: 'Vanilla'
+  },
+  {
+    color: '#ff99a3',
+    name: 'Pink'
+  },
+  {
+    color: '#d5ccb2',
+    name: 'Fruit'
+  }
+]
+export const fillingOptions: SeasonOption[] = [
+  {
+    color: '#e75656',
+    name: 'Jam'
+  },
+  {
+    color: '#ffffff',
+    name: 'Cream'
+  },
+  {
+    color: '#9f3d28',
+    name: 'Choc'
+  },
+  {
+    color: '#e8e086',
+    name: 'Lemon'
+  }
+]
