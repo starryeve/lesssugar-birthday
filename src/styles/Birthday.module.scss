@@ -66,6 +66,10 @@
           top: -37px;
           left: 50%;
           transform: rotate(0deg) translateX(-35px) translateY(3px) rotate(0deg) scale(1);
+
+          img.mixing :local{
+            animation: mix 1s 0s linear infinite;
+          }
         }
       }
 
@@ -73,7 +77,6 @@
         margin-top: 30px;
         position: relative;
         top: -20px;
-
       }
     }
 
@@ -187,5 +190,23 @@
   }
   to {
     top: -30px;
+  }
+}
+
+@keyframes mix {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  25% {
+    transform: translate(14px, 2px);
+  }
+  50% {
+    transform: translate(28px, 0px);
+  }
+  75% {
+    transform: translate(14px, -2px);
+  }
+  100% {
+    transform: translate(0px, 0px);
   }
 }

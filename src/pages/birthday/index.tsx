@@ -65,8 +65,19 @@ interface Stage2Props {
   onMixWell: () => void
 }
 function Stage2({ onMixWell }:Stage2Props) {
-  const [count, setCount] = useState(0) // stir times
+  const [count, setCount] = useState(0) // mix times
+  const [mixing, setMixing] = useState(false)
   const MIX_WELL_COUNT = 5
+
+  const mix = () => {
+    if(!mixing && count < MIX_WELL_COUNT) {
+      setCount(count + 1)
+      setMixing(true)
+      setTimeout(() => {
+        setMixing(false)
+      }, 1000);
+    }
+  }
 
   useEffect(() => {
     if(count === MIX_WELL_COUNT) { // mix well, call onMixWell func
@@ -83,11 +94,11 @@ function Stage2({ onMixWell }:Stage2Props) {
           src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/bowl.png" alt="Mix Bowl" />
       </div>
       <div className="mix__spoon">
-        <Image width={25} height={81}
+        <Image width={25} height={81} className={mixing ? 'mixing' : ''}
           src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/spoon.png" alt="Mix Spoon" />
       </div>
     </div>
-    <LSButton className="start" onClick={() => setCount(count + 1)}>Click here to mix!</LSButton>
+    <LSButton className="start" onClick={mix}>Click here to mix!</LSButton>
   </div>
 }
 
