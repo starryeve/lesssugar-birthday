@@ -9,7 +9,7 @@ import Stage3 from './components/Stage3'
 import Stage4 from './components/Stage4'
 
 export default function Birthday() {
-  const [progress, setProgress] =  useState(1)
+  const [progress, setProgress] = useState(4)
 
   const [modalShow, setModalShow] = useState(false)
   const [modalContent, setModalContent] = useState<StageContent>(stagesContent[0])

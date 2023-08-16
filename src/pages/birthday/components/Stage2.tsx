@@ -22,7 +22,9 @@ export default function Stage2({ onMixWell }:Stage2Props) {
 
   useEffect(() => {
     if(count === MIX_WELL_COUNT) { // mix well, call onMixWell func
-      onMixWell()
+      setTimeout(() => {
+        onMixWell()
+      }, 1000);
     }
   }, [count, onMixWell])
 

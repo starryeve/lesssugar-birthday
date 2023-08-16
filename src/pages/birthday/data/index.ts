@@ -25,39 +25,47 @@ export const stagesContent: StageContent[] = [
   },
 ]
 
-export interface SeasonOption {
+export interface SeasonOption<T = 'base' | 'filling'> {
   color: string
-  name: string
+  name: string,
+  type: T
 }
-export const baseOptions: SeasonOption[] = [
+export const baseOptions: SeasonOption<'base'>[] = [
   {
     color: '#ffd296',
-    name: 'Vanilla'
+    name: 'Vanilla',
+    type: 'base',
   },
   {
     color: '#ff99a3',
-    name: 'Pink'
+    name: 'Pink',
+    type: 'base',
   },
   {
     color: '#d5ccb2',
-    name: 'Fruit'
+    name: 'Fruit',
+    type: 'base',
   }
 ]
-export const fillingOptions: SeasonOption[] = [
+export const fillingOptions: SeasonOption<'filling'>[] = [
   {
     color: '#e75656',
-    name: 'Jam'
+    name: 'Jam',
+    type: 'filling',
   },
   {
     color: '#ffffff',
-    name: 'Cream'
+    name: 'Cream',
+    type: 'filling',
   },
   {
     color: '#9f3d28',
-    name: 'Choc'
+    name: 'Choc',
+    type: 'filling',
   },
   {
     color: '#e8e086',
-    name: 'Lemon'
+    name: 'Lemon',
+    type: 'filling',
   }
 ]
