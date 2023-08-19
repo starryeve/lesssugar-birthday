@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import LSButton from "@/components/LSButton"
+import LSButton from "@/components/common/LSButton"
 
 interface Stage1Props {
   onStart: () => void

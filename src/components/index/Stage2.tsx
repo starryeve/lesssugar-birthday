@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import Image from 'next/image'
-import LSButton from "@/components/LSButton"
+import LSButton from "@/components/common/LSButton"
 
 interface Stage2Props {
   onMixWell: () => void

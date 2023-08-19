@@ -1,6 +1,6 @@
-import LSButton from '@/components/LSButton'
+import LSButton from '@/components/common/LSButton'
 import { useEffect, useState } from 'react'
-import { SeasonOption, baseOptions, fillingOptions } from '../data/index'
+import { SeasonOption, baseOptions, fillingOptions } from '@/data/index'
 const MAX_BASE_COUNT = 5, MAX_FILLINGS_COUNT = 6
 
 export default function Stage4() {
