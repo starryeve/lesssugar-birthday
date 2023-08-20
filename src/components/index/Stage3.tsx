@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
+import { useDrag, useDrop } from 'react-dnd'
 
 const DND_FORMAT = 'tin'
 
@@ -9,58 +10,35 @@ interface Stage3Props {
 
 export default function Stage3({ onBaseBake }: Stage3Props) {
   const [isHover, setIsHover] = useState(false)
-  const onDragStart: React.DragEventHandler = e => {
-    console.log('drag start: ', e)
-    const data = {
+  const [ { isDragging }, drag, preview ] = useDrag(
+    () => ({
       type: DND_FORMAT,
-      id: 1
-    }
-    e.dataTransfer.setData(DND_FORMAT, JSON.stringify(data))
-  }
+      collect: (monitor) => ({
+        isDragging: !!monitor.isDragging()
+      })
+    })
+  )
 
-  const onDragOver: React.DragEventHandler = e => {
-    e.preventDefault()
-    return
-  }
-
-  const onDragEnter: React.DragEventHandler = e => {
-    setIsHover(true)
-    // console.log('drag enter: ', e)
-  }
-
-  const onDragLeave: React.DragEventHandler = e => {
-    setIsHover(false)
-    // console.log('drag leave: ', e)
-  }
-
-  const onDrop: React.DragEventHandler = e => {
-    setIsHover(false)
-    const { dataTransfer } = e
-    const dataStr = dataTransfer.getData(DND_FORMAT)
-    if(dataStr) {
-      const data = JSON.parse(dataStr)
-      if(data.type === DND_FORMAT) {
-        onBaseBake()
-      }
-    } else {
-      return
-    }
-  }
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: DND_FORMAT,
+    drop: () => onBaseBake(),
+    collect: monitor => ({
+      isOver: !!monitor.isOver()
+    })
+  }))
 
   return <div className="birthday__stage stage3">
-    <h1>Let’s bake own base</h1>
-    <p>Alright, let’s get this mixture in the oven. Go ahead and drag the cake mix into the digital oven. Then put your feet up while it bakes.</p>
-    <div className={isHover ? 'oven hover' : 'oven'}
-      onDragOver={onDragOver}
-      onDragEnter={onDragEnter}
-      onDragLeave={onDragLeave}
-      onDrop={onDrop}>
+    {/* <h1>Let’s bake own base</h1> */}
+    <h1>烘烤蛋糕胚</h1>
+    <p>现在要把之前打好的面糊放到烤箱里. 看到下面那个模具了吗，把它拖到上面。速度要快，丢完手立刻伸开，小心别被烫到，蛋糕胚的烘焙温度有150°C呢！</p>
+    <div className={isOver ? 'oven hover' : 'oven'} >
       <Image width={290} height={282} draggable={false}
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/oven.png" alt="Oven"/>
+        src="/oven.png" alt="Oven"/>
+      <div className="over-real" ref={drop}></div>
     </div>
-    <div className="tin" draggable onDragStart={onDragStart}>
+    <div className="tin" ref={drag}>
       <Image width={90} height={70} draggable={false}
-        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/tin.png" alt="Tin" />
+        src="/tin.png" alt="Tin" />
     </div>
   </div>
 }

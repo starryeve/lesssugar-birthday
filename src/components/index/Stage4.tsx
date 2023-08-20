@@ -1,11 +1,15 @@
-import LSButton from '@/components/common/LSButton'
 import { useEffect, useState } from 'react'
+import { CSSTransition } from 'react-transition-group'
+import Image from 'next/image'
+import LSButton from '@/components/common/LSButton'
 import { SeasonOption, baseOptions, fillingOptions } from '@/data/index'
-const MAX_BASE_COUNT = 5, MAX_FILLINGS_COUNT = 6
+const MAX_BASE_COUNT = 4, MAX_FILLINGS_COUNT = 5
 
 export default function Stage4() {
   const [bases, setBases] = useState<SeasonOption<'base'>[]>([])
   const [fillings, setFillings] = useState<SeasonOption<'filling'>[]>([])
+
+  const [finished, setFinished] = useState(false)
 
   const onBaseAdd = (base: SeasonOption<'base'>) => {
     setBases([...bases, base])
@@ -14,15 +18,27 @@ export default function Stage4() {
     setFillings([...fillings, filling])
   }
 
+  const onAddCandle = () => {
+    setFinished(true)
+  }
+
   return  <div className="birthday__stage stage4">
-    <h1>Let’s make the cake</h1>
-    <p>Build your cake in any order you want. Click an ingredient to add it to your cake. You can add more than one item e.g 2 vanilla sponges but only 5 bases and 6 fillings. Hit the button at the bottom to finish your cake and add your candles. Make sure you leave some icing for the top of your cake!</p>
+    <CSSTransition in={ !finished } timeout={1000} classNames="fade" >
+      <div>
+        {/* <h1>Let’s make the cake</h1> */}
+        <h1>装饰点缀</h1>
+        {/* <p>Build your cake in any order you want. Click an ingredient to add it to your cake. You can add more than one item e.g 2 vanilla sponges but only 5 bases and 6 fillings. Hit the button at the bottom to finish your cake and add your candles. Make sure you leave some icing for the top of your cake!</p> */}
+        <p>按你喜欢的任何顺序涂上点缀，点击任意一种原料，就会层层叠加到蛋糕上。一定一定要确保把你想吃的都加上了，之后点一下底部的按钮，蜡烛就会出现，你的蛋糕就做好啦！</p>
+        <SeasonPaste bases={bases} fillings={fillings} maxBaseCount={MAX_BASE_COUNT} maxFillingCount={MAX_FILLINGS_COUNT}
+          onBaseAdd={onBaseAdd} onFillingAdd={onFillingAdd} />
+      </div>
 
-    <SeasonPaste bases={bases} fillings={fillings} maxBaseCount={MAX_BASE_COUNT} maxFillingCount={MAX_FILLINGS_COUNT}
-      onBaseAdd={onBaseAdd} onFillingAdd={onFillingAdd} />
-    <Cake bases={bases} fillings={fillings}/>
+    </CSSTransition>
 
-    <LSButton>Add the candle!</LSButton>
+    <Cake bases={bases} fillings={fillings} finished={finished}/>
+
+    {/* {!finished && <LSButton onClick={onAddCandle}>Add the candle!</LSButton>} */}
+    {!finished && <LSButton onClick={onAddCandle}>点上蜡烛!</LSButton>}
   </div>
 }
 
@@ -41,7 +57,8 @@ function SeasonPaste({ bases, fillings, maxBaseCount, maxFillingCount, onBaseAdd
   return <div className='season-paste'>
     <div className={active === 'base' && bases.length < maxBaseCount ? 'paste' : 'paste inactive'}>
       <div className="intros">
-        <h3>Bases</h3>
+        {/* <h3>Bases</h3> */}
+        <h3>底座</h3>
         <h5>{bases.length} / {maxBaseCount}</h5>
       </div>
       <div className="options">
@@ -61,7 +78,8 @@ function SeasonPaste({ bases, fillings, maxBaseCount, maxFillingCount, onBaseAdd
 
     <div className={active === 'filling' && fillings.length < maxFillingCount ? 'paste' : 'paste inactive'}>
       <div className="intros">
-        <h3>Fillings / icings</h3>
+        {/* <h3>Fillings / icings</h3> */}
+        <h3>填充/奶油</h3>
         <h5>{fillings.length} / {maxFillingCount}</h5>
       </div>
       <div className="options">
@@ -83,9 +101,10 @@ function SeasonPaste({ bases, fillings, maxBaseCount, maxFillingCount, onBaseAdd
 
 interface CakeProps {
   bases: SeasonOption<'base'>[]
-  fillings: SeasonOption<'filling'>[]
+  fillings: SeasonOption<'filling'>[],
+  finished: boolean,
 }
-function Cake({bases, fillings}: CakeProps) {
+function Cake({bases, fillings, finished}: CakeProps) {
   const [layers, setLayers] = useState<SeasonOption[]>([])
   useEffect(() => {
     const arr: SeasonOption[] = []
@@ -99,14 +118,33 @@ function Cake({bases, fillings}: CakeProps) {
     setLayers(arr)
   }, [bases, fillings])
 
-  return <div className="cake">
+  return <div className={finished ? 'cake finished' : 'cake'}>
+    <div className={finished ? 'candle finished' : 'candle'}>
+      <Image width={10} height={44}
+          src="/candle.png" alt="Candle" />
+    </div>
+
+
     {
       layers.map((layer, index) => (
         <div key={layer.name + index} className={layer.type}
           style={{
             backgroundColor: layer.color,
-            width: 200 * (MAX_BASE_COUNT + MAX_FILLINGS_COUNT - layers.length + index) / (MAX_BASE_COUNT + MAX_FILLINGS_COUNT) + 'px'
+            width: 200 * (MAX_BASE_COUNT + MAX_FILLINGS_COUNT + 8 - layers.length + index) / (MAX_BASE_COUNT + 8 + MAX_FILLINGS_COUNT) + 'px'
           }}>
+            {
+              layer.type === 'filling' ? ['', '', '', '', '', '', '', ''].map((_,index) => (
+                <div key={index} style={{
+                  backgroundColor: layer.color,
+                }}>
+                </div>
+              )) : ['', '', '', '', ''].map((_,index) => (
+                <div key={index} style={{
+                  backgroundColor: layer.color,
+                }}>
+                </div>
+              ))
+            }
         </div>
       ))
     }

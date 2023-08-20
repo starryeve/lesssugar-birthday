@@ -6,22 +6,26 @@ export interface StageContent {
 }
 export const stagesContent: StageContent[] = [
   {
-    imgUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/cake_modal.png',
-    title: 'Let’s make a cake!',
-    description: 'Since it’s your birthday, I find it only fitting that you get to make your own digital birthday cake. Start by making your cake mixture, then bake it in a digital oven and finally decorate. Have fun and happy birthday',
-    btnUrl: 'Okay, Let‘s go'
+    imgUrl: '/cake_modal.png',
+    // title: 'Let’s make a cake!',
+    title: '做个蛋糕!',
+    description: '嗯...既然是你的生日, 干脆来试一下自己做一个蛋糕？开始要制作面团，然后放入烤箱烘焙，最后涂上喜欢的奶油等等。大概就是这样，准备好了吗？',
+    // btnUrl: 'Okay, Let‘s go',
+    btnUrl: '准备好了，开始吧！'
   },
   {
-    imgUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/mix_modal.png',
-    title: 'Mix successful!',
-    description: 'Congratulations, the mixture is perfect! After pouring the mixture into a baking tin, it’s now time to put it in our digital oven for about 3 seconds. That should be enough time for a nice spongy base.',
-    btnUrl: 'Okay, Let‘s go'
+    imgUrl: '/mix_modal.png',
+    // title: 'Mix successful!',
+    title: '融合均匀!',
+    // description: 'Congratulations, the mixture is perfect! After pouring the mixture into a baking tin, it’s now time to put it in our digital oven for about 3 seconds. That should be enough time for a nice spongy base.',
+    description: '真不错, 一点颗粒都看不到! 先去帮你把烤箱预热下哈，打发面团蛮容易手酸的，稍微休息一会儿吧，哦对了，因为是鼠标点击或者屏幕触摸，所以刚刚说的越大力越快，是骗人的。\n下一步，把做好的面糊放入烤箱。',
+    btnUrl: '预热好了，快拿过来！'
   },
   {
-    imgUrl: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/oven_modal.png',
-    title: 'Bake successfull!',
-    description: 'Yes! You are a master chef. The base is fully baked and looks super yummy. Now its time to combine this base with lots of other ingredients like jam, marmalade, chocolate and more.',
-    btnUrl: 'Okay, Let‘s go'
+    imgUrl: '/oven_modal.png',
+    title: '烤焙完成!',
+    description: '叮！时间到了，拿出来看一下吧。要是表面隆起一定高度又往下塌，说明就已经熟透了。晾一会儿，热气排空，接下来就可以往上涂奶油层了。',
+    btnUrl: '奶油奶油奶油！'
   },
 ]
 
@@ -33,39 +37,46 @@ export interface SeasonOption<T = 'base' | 'filling'> {
 export const baseOptions: SeasonOption<'base'>[] = [
   {
     color: '#ffd296',
-    name: 'Vanilla',
+    // name: 'Vanilla',
+    name: '香草',
     type: 'base',
   },
   {
     color: '#ff99a3',
-    name: 'Pink',
+    // name: 'Pink',
+    name: '糖果',
     type: 'base',
   },
   {
     color: '#d5ccb2',
-    name: 'Fruit',
+    // name: 'Fruit',
+    name: '水果',
     type: 'base',
   }
 ]
 export const fillingOptions: SeasonOption<'filling'>[] = [
   {
     color: '#e75656',
-    name: 'Jam',
+    // name: 'Jam',
+    name: '果酱',
     type: 'filling',
   },
   {
     color: '#ffffff',
-    name: 'Cream',
+    // name: 'Cream',
+    name: '奶油',
     type: 'filling',
   },
   {
     color: '#9f3d28',
-    name: 'Choc',
+    // name: 'Choc',
+    name: '巧克力',
     type: 'filling',
   },
   {
     color: '#e8e086',
-    name: 'Lemon',
+    // name: 'Lemon',
+    name: '柠檬浆',
     type: 'filling',
   }
 ]

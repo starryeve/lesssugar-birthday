@@ -12,7 +12,7 @@ interface ModalProps {
 export default function Modal({ imgUrl, title, content, btnText, onConfirm}: ModalProps) {
   return <div className={styles['ls-modal']}>
     <div className="ls-modal__image">
-      <Image width={100} height={125}
+      <Image width={100} height={102}
        src={imgUrl} alt={title} />
     </div>
     <div className="ls-modal__content">
