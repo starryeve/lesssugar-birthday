@@ -20,7 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return <DndProvider backend={source === 'pc' ? HTML5Backend : TouchBackend}>
     <Head>
-      <title>生日快乐！</title>
+      <title>少糖，生日快乐！</title>
     </Head>
     <Component {...pageProps} />
   </DndProvider>
