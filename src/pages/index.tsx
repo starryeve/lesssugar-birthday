@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import Countdown from "react-countdown";
 import styles from '@/styles/Birthday.module.scss'
 import { StageContent, stagesContent } from '@/data'
 import LSModal from '@/components/common/LSModal'
@@ -7,6 +8,7 @@ import Stage1 from '@/components/index/Stage1'
 import Stage2 from '@/components/index/Stage2'
 import Stage3 from '@/components/index/Stage3'
 import Stage4 from '@/components/index/Stage4'
+import dayjs from 'dayjs';
 
 export default function Birthday() {
   const [progress, setProgress] = useState(1)
@@ -20,8 +22,30 @@ export default function Birthday() {
       audioRef.current.play()
     }
   }
+  const [seconds, setSeconds] = useState(0)
+  useEffect(() => {
+    const now = dayjs()
+    const birthday = dayjs('2023-08-24 00:00')
+
+    const diff = Math.floor(birthday.diff(now) / 1000)
+    setSeconds(diff)
+
+    const countdown = setInterval(() => {
+      setSeconds(seconds => seconds - 1)
+    }, 1000)
+
+    return () => {
+      clearInterval(countdown)
+    }
+  }, [])
   return <main className={styles.birthday}>
-    <audio autoPlay ref={audioRef}>
+    {
+      seconds >= 0
+    ? <div className='countdown'>
+      <Countdown  date={Date.now() + (seconds * 1000)}></Countdown>
+    </div>
+    : <>
+    <audio autoPlay loop ref={audioRef}>
       <source src="/bgm1.mp3" type="audio/mpeg" />
     </audio>
 
@@ -61,6 +85,8 @@ export default function Birthday() {
     <CSSTransition in={ !modalShow && progress === 4 } timeout={2000} classNames="fade" unmountOnExit >
       <Stage4 />
     </CSSTransition>
+    </>
+  }
   </main>
 }
 

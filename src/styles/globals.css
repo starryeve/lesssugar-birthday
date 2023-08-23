@@ -340,3 +340,11 @@ a {
     margin-left: 80%;
   }
 }
+
+
+.countdown {
+  text-align: center;
+  font-size: 45px;
+  color: #e77572;
+  letter-spacing: 4px;
+}
