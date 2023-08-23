@@ -11,21 +11,21 @@ export const stagesContent: StageContent[] = [
     title: '做个蛋糕!',
     description: '嗯...既然是你的生日, 干脆来试一下自己做一个蛋糕？开始要制作面团，然后放入烤箱烘焙，最后涂上喜欢的奶油等等。大概就是这样，准备好了吗？',
     // btnUrl: 'Okay, Let‘s go',
-    btnUrl: '准备好了，开始吧！'
+    btnUrl: '准备好了，开始吧'
   },
   {
     imgUrl: '/mix_modal.png',
     // title: 'Mix successful!',
     title: '融合均匀!',
     // description: 'Congratulations, the mixture is perfect! After pouring the mixture into a baking tin, it’s now time to put it in our digital oven for about 3 seconds. That should be enough time for a nice spongy base.',
-    description: '真不错, 一点颗粒都看不到! 先去帮你把烤箱预热下哈，打发面团还蛮累人，浅浅歇一会儿。哦对了，因为是鼠标点击或者屏幕触摸，所以刚刚说的越大力越快，是骗人的。\n下一步，把做好的面糊放入烤箱。',
-    btnUrl: '预热好了，放进来！'
+    description: '真不错，一点颗粒都看不到! 先去把烤箱预热下，你呢就歇一会儿。哦对了，因为是鼠标点击或者屏幕触摸，所以刚刚说的越大力越快是骗人的。\n下一步，把做好的面糊放入烤箱。',
+    btnUrl: '预热好了，放进来'
   },
   {
     imgUrl: '/oven_modal.png',
     title: '烤焙完成!',
     description: '叮！时间到了，拿出来看一下吧。看到表面隆起一定高度又往下塌，说明就已经熟透了。晾一会儿，热气排空，接下来就可以往上涂奶油层了。',
-    btnUrl: '拿起你的奶油枪！'
+    btnUrl: '拿出你的奶油枪'
   },
 ]
 
@@ -62,7 +62,7 @@ export const fillingOptions: SeasonOption<'filling'>[] = [
     type: 'filling',
   },
   {
-    color: '#bdbad1',
+    color: '#e1dcff',
     // name: 'Jam',
     name: '芋泥流心',
     type: 'filling',

@@ -39,6 +39,20 @@ export default function Stage4() {
 
     {/* {!finished && <LSButton onClick={onAddCandle}>Add the candle!</LSButton>} */}
     {!finished && <LSButton onClick={onAddCandle}>点上蜡烛!</LSButton>}
+
+    <div className={finished ? 'hoping finished' : 'hoping'}>
+      生日快乐<br />
+      <p>一个人在一座陌生的城市有时候是会感觉心累...<br/> 接下来的日子坏运气都走开，去相信去遇见更多美好的人和事！</p>
+    </div>
+
+    {
+      finished && <div className='firework'>
+        <div className="pyro">
+          <div className="before"></div>
+          <div className="after"></div>
+        </div>
+      </div>
+    }
   </div>
 }
 
@@ -122,6 +136,7 @@ function Cake({bases, fillings, finished}: CakeProps) {
     <div className={finished ? 'candle finished' : 'candle'}>
       <Image width={10} height={44}
           src="/candle.png" alt="Candle" />
+      <div className="frame"></div>
     </div>
 
 

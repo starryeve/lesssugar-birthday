@@ -43,6 +43,6 @@ export default function Stage2({ onMixWell }:Stage2Props) {
       </div>
     </div>
     {/* <LSButton className="start" onClick={mix}>Click here to mix!</LSButton> */}
-    <LSButton className="start" onClick={mix}>点这儿!</LSButton>
+    <LSButton className="start" onClick={mix}>用力点这儿！</LSButton>
   </div>
 }
