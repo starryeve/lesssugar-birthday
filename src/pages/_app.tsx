@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return <DndProvider backend={source === 'pc' ? HTML5Backend : TouchBackend}>
     <Head>
       <title>少糖，生日快乐！</title>
-      <meta name="description" content="Hi~，被你发现了什么？这里本来藏着一些不能说出口的话，但现在它们只可能会在某个时刻出现了。如果不小心看到了，你可别告诉网站的拥有者[嘘]" />
+      
     </Head>
     <Component {...pageProps} />
   </DndProvider>
