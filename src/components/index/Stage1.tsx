@@ -9,6 +9,6 @@ export default function Stage1({ onStart } : Stage1Props) {
     <Image width={300} height={370}
       src="/cake.png" alt="Birth Cake" />
     {/* <LSButton className="start" onClick={onStart}>Let’s make a cake!</LSButton> */}
-    <LSButton className="start" onClick={onStart}>生日快乐!</LSButton>
+    <LSButton className="start" onClick={onStart}>来做个蛋糕吧！</LSButton>
   </div>
 }

@@ -30,7 +30,7 @@ export default function Stage3({ onBaseBake }: Stage3Props) {
   return <div className="birthday__stage stage3">
     {/* <h1>Let’s bake own base</h1> */}
     <h1>烘烤蛋糕胚</h1>
-    <p>现在要把之前打好的面糊放到烤箱里. 看到下面那个模具了吗，把它拖到上面。速度要快，丢完手立刻伸开，小心别被烫到，蛋糕胚的烘焙温度有150°C呢！</p>
+    <p>现在要把之前打好的面糊放到烤箱里. 找到下面那个模具了吗，长按把它拖到上面。速度要快，丢完手立刻伸开，小心别被烫到，烤箱的温度有150°C呢！</p>
     <div className={isOver ? 'oven hover' : 'oven'} >
       <Image width={290} height={282} draggable={false}
         src="/oven.png" alt="Oven"/>

@@ -13,28 +13,17 @@ export default function Birthday() {
 
   const [modalShow, setModalShow] = useState(false)
   const [modalContent, setModalContent] = useState<StageContent>(stagesContent[0])
-  const audioRef = useRef<any>();
 
-  const play = () => {
-    if (audioRef.current) {
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const handlePlay = () => {
+    if(audioRef.current) {
       audioRef.current.play()
-    } else {
-      // Throw error
     }
   }
-
-  setTimeout(() => {
-    document.getElementById('btn')?.click()
-  }, 2000);
   return <main className={styles.birthday}>
-      <button id="btn" onClick={play} style={{
-        position:'fixed',
-        top: '100px',
-        display: 'none'
-      }}>Play</button>
-      <audio loop autoPlay ref={audioRef} src='/bgm1.mp3' onLoadedData={() => {
-        play()
-      }} />
+    <audio autoPlay ref={audioRef}>
+      <source src="/bgm1.mp3" type="audio/mpeg" />
+    </audio>
 
     <CSSTransition in={modalShow} timeout={2000} classNames="scale" unmountOnExit>
       <LSModal imgUrl={modalContent.imgUrl} title={modalContent.title}
@@ -48,6 +37,7 @@ export default function Birthday() {
       <Stage1 onStart={() => {
         console.log('onstart')
         setModalShow(true)
+        handlePlay()
         setModalContent(stagesContent[0])
       }}/>
     </CSSTransition>

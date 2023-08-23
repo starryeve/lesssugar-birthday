@@ -18,14 +18,14 @@ export const stagesContent: StageContent[] = [
     // title: 'Mix successful!',
     title: '融合均匀!',
     // description: 'Congratulations, the mixture is perfect! After pouring the mixture into a baking tin, it’s now time to put it in our digital oven for about 3 seconds. That should be enough time for a nice spongy base.',
-    description: '真不错, 一点颗粒都看不到! 先去帮你把烤箱预热下哈，打发面团蛮容易手酸的，稍微休息一会儿吧，哦对了，因为是鼠标点击或者屏幕触摸，所以刚刚说的越大力越快，是骗人的。\n下一步，把做好的面糊放入烤箱。',
-    btnUrl: '预热好了，快拿过来！'
+    description: '真不错, 一点颗粒都看不到! 先去帮你把烤箱预热下哈，打发面团还蛮累人，浅浅歇一会儿。哦对了，因为是鼠标点击或者屏幕触摸，所以刚刚说的越大力越快，是骗人的。\n下一步，把做好的面糊放入烤箱。',
+    btnUrl: '预热好了，放进来！'
   },
   {
     imgUrl: '/oven_modal.png',
     title: '烤焙完成!',
-    description: '叮！时间到了，拿出来看一下吧。要是表面隆起一定高度又往下塌，说明就已经熟透了。晾一会儿，热气排空，接下来就可以往上涂奶油层了。',
-    btnUrl: '奶油奶油奶油！'
+    description: '叮！时间到了，拿出来看一下吧。看到表面隆起一定高度又往下塌，说明就已经熟透了。晾一会儿，热气排空，接下来就可以往上涂奶油层了。',
+    btnUrl: '拿起你的奶油枪！'
   },
 ]
 
@@ -42,7 +42,7 @@ export const baseOptions: SeasonOption<'base'>[] = [
     type: 'base',
   },
   {
-    color: '#ff99a3',
+    color: '#C73F4A',
     // name: 'Pink',
     name: '糖果',
     type: 'base',
@@ -50,17 +50,11 @@ export const baseOptions: SeasonOption<'base'>[] = [
   {
     color: '#d5ccb2',
     // name: 'Fruit',
-    name: '水果',
+    name: '开心果',
     type: 'base',
   }
 ]
 export const fillingOptions: SeasonOption<'filling'>[] = [
-  {
-    color: '#e75656',
-    // name: 'Jam',
-    name: '果酱',
-    type: 'filling',
-  },
   {
     color: '#ffffff',
     // name: 'Cream',
@@ -70,13 +64,19 @@ export const fillingOptions: SeasonOption<'filling'>[] = [
   {
     color: '#9f3d28',
     // name: 'Choc',
-    name: '巧克力',
+    name: '提拉米苏',
     type: 'filling',
   },
   {
-    color: '#e8e086',
+    color: '#d38597',
+    // name: 'Jam',
+    name: '玫瑰',
+    type: 'filling',
+  },
+  {
+    color: '#e0b45f',
     // name: 'Lemon',
-    name: '柠檬浆',
+    name: '芒果芝士',
     type: 'filling',
   }
 ]
