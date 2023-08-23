@@ -43,6 +43,13 @@ export default function Birthday() {
    <div className={seconds > 0 ? 'countdown' : 'countdown hidden'}>
       <Countdown  date={Date.now() + (seconds * 1000)}></Countdown>
     </div>
+    <CSSTransition in={modalShow} timeout={2000} classNames="scale" unmountOnExit>
+        <LSModal imgUrl={modalContent.imgUrl} title={modalContent.title}
+          content={modalContent.description} btnText={modalContent.btnUrl} onConfirm={() => {
+          setProgress(progress => progress + 1)
+          setModalShow(false)
+        }}/>
+      </CSSTransition>
     <div className={seconds > 0 ? 'hidden' : ''}>
       <audio autoPlay loop ref={audioRef}>
         <source src="/bgm1.mp3" type="audio/mpeg" />
@@ -57,15 +64,9 @@ export default function Birthday() {
       <Image width={90} height={70} draggable={false}
         src="/tin.png" alt="Tin"className='hidden' />
       <Image width={10} height={44}
-        src="/candle.png" alt="Candle" className='hidden'/>
+          src="/candle.png" alt="Candle" className='hidden' />
 
-      <CSSTransition in={modalShow} timeout={2000} classNames="scale" unmountOnExit>
-        <LSModal imgUrl={modalContent.imgUrl} title={modalContent.title}
-          content={modalContent.description} btnText={modalContent.btnUrl} onConfirm={() => {
-          setProgress(progress => progress + 1)
-          setModalShow(false)
-        }}/>
-      </CSSTransition>
+
 
       <CSSTransition in={ !modalShow && progress === 1 } timeout={2000} classNames="fade" unmountOnExit>
         <Stage1 onStart={() => {
