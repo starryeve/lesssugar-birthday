@@ -62,6 +62,12 @@ export const fillingOptions: SeasonOption<'filling'>[] = [
     type: 'filling',
   },
   {
+    color: '#bdbad1',
+    // name: 'Jam',
+    name: '芋泥流心',
+    type: 'filling',
+  },
+  {
     color: '#9f3d28',
     // name: 'Choc',
     name: '提拉米苏',
