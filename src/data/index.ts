@@ -68,7 +68,7 @@ export const fillingOptions: SeasonOption<'filling'>[] = [
     type: 'filling',
   },
   {
-    color: '#d38597',
+    color: '#ff99a3',
     // name: 'Jam',
     name: '玫瑰',
     type: 'filling',

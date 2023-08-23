@@ -1,5 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Damion);
-
+@font-face {
+  font-family: "ls-font";
+  src: url('/MaoKenZhuYuanTi-MaokenZhuyuanTi-2.ttf');
+}
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -79,14 +82,16 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Damion', cursive;
+  /* font-family: 'Damion', cursive; */
+  font-family: 'ls-font';
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: 'Damion', cursive;
+  /* font-family: 'Damion', cursive; */
+  font-family: 'ls-font';
 }
 
 body {
