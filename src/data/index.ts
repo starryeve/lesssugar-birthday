@@ -42,7 +42,7 @@ export const baseOptions: SeasonOption<'base'>[] = [
     type: 'base',
   },
   {
-    color: '#C73F4A',
+    color: '#f74352c7',
     // name: 'Pink',
     name: '糖果',
     type: 'base',
@@ -70,13 +70,13 @@ export const fillingOptions: SeasonOption<'filling'>[] = [
   {
     color: '#ff99a3',
     // name: 'Jam',
-    name: '玫瑰',
+    name: '玫瑰千层',
     type: 'filling',
   },
   {
-    color: '#e0b45f',
+    color: '#f7cb76',
     // name: 'Lemon',
-    name: '芒果芝士',
+    name: '芒果',
     type: 'filling',
   }
 ]
