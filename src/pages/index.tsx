@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import Countdown from "react-countdown";
+import Image from 'next/image';
 import styles from '@/styles/Birthday.module.scss'
 import { StageContent, stagesContent } from '@/data'
 import LSModal from '@/components/common/LSModal'
@@ -39,54 +40,62 @@ export default function Birthday() {
     }
   }, [])
   return <main className={styles.birthday}>
-    {
-      seconds >= 0
-    ? <div className='countdown'>
+   <div className={seconds > 0 ? 'countdown' : 'countdown hidden'}>
       <Countdown  date={Date.now() + (seconds * 1000)}></Countdown>
     </div>
-    : <>
-    <audio autoPlay loop ref={audioRef}>
-      <source src="/bgm1.mp3" type="audio/mpeg" />
-    </audio>
+    <div className={seconds > 0 ? 'hidden' : ''}>
+      <audio autoPlay loop ref={audioRef}>
+        <source src="/bgm1.mp3" type="audio/mpeg" />
+      </audio>
 
-    <CSSTransition in={modalShow} timeout={2000} classNames="scale" unmountOnExit>
-      <LSModal imgUrl={modalContent.imgUrl} title={modalContent.title}
-        content={modalContent.description} btnText={modalContent.btnUrl} onConfirm={() => {
-        setProgress(progress => progress + 1)
-        setModalShow(false)
-      }}/>
-    </CSSTransition>
+      <Image width={207} height={148}
+          src="/bowl.png" alt="Mix Bowl" className='hidden'/>
+      <Image width={25} height={81} className='hidden'
+          src="/spoon.png" alt="Mix Spoon" />
+      <Image width={290} height={282} draggable={false}
+        src="/oven.png" alt="Oven" className='hidden'/>
+      <Image width={90} height={70} draggable={false}
+        src="/tin.png" alt="Tin"className='hidden' />
+      <Image width={10} height={44}
+        src="/candle.png" alt="Candle" className='hidden'/>
 
-    <CSSTransition in={ !modalShow && progress === 1 } timeout={2000} classNames="fade" unmountOnExit>
-      <Stage1 onStart={() => {
-        console.log('onstart')
-        setModalShow(true)
-        handlePlay()
-        setModalContent(stagesContent[0])
-      }}/>
-    </CSSTransition>
+      <CSSTransition in={modalShow} timeout={2000} classNames="scale" unmountOnExit>
+        <LSModal imgUrl={modalContent.imgUrl} title={modalContent.title}
+          content={modalContent.description} btnText={modalContent.btnUrl} onConfirm={() => {
+          setProgress(progress => progress + 1)
+          setModalShow(false)
+        }}/>
+      </CSSTransition>
 
-    <CSSTransition in={ !modalShow && progress === 2 } timeout={2000} classNames="fade" unmountOnExit >
-      <Stage2 onMixWell={() => {
-        console.log('onMixWell')
-        setModalShow(true)
-        setModalContent(stagesContent[1])
-      }} />
-    </CSSTransition>
+      <CSSTransition in={ !modalShow && progress === 1 } timeout={2000} classNames="fade" unmountOnExit>
+        <Stage1 onStart={() => {
+          console.log('onstart')
+          setModalShow(true)
+          handlePlay()
+          setModalContent(stagesContent[0])
+        }}/>
+      </CSSTransition>
 
-    <CSSTransition in={ !modalShow && progress === 3 } timeout={2000} classNames="fade" unmountOnExit >
-      <Stage3 onBaseBake={() => {
-        console.log('onBaseBake')
-        setModalShow(true)
-        setModalContent(stagesContent[2])
-      }} />
-    </CSSTransition>
+      <CSSTransition in={ !modalShow && progress === 2 } timeout={2000} classNames="fade" unmountOnExit >
+        <Stage2 onMixWell={() => {
+          console.log('onMixWell')
+          setModalShow(true)
+          setModalContent(stagesContent[1])
+        }} />
+      </CSSTransition>
 
-    <CSSTransition in={ !modalShow && progress === 4 } timeout={2000} classNames="fade" unmountOnExit >
-      <Stage4 />
-    </CSSTransition>
-    </>
-  }
+      <CSSTransition in={ !modalShow && progress === 3 } timeout={2000} classNames="fade" unmountOnExit >
+        <Stage3 onBaseBake={() => {
+          console.log('onBaseBake')
+          setModalShow(true)
+          setModalContent(stagesContent[2])
+        }} />
+      </CSSTransition>
+
+      <CSSTransition in={ !modalShow && progress === 4 } timeout={2000} classNames="fade" unmountOnExit >
+        <Stage4 />
+      </CSSTransition>
+    </div>
   </main>
 }
 

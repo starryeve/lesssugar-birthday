@@ -348,3 +348,7 @@ a {
   color: #e77572;
   letter-spacing: 4px;
 }
+
+.hidden {
+  display: none;
+}
